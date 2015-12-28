@@ -5,12 +5,12 @@
     "main": "index.js",
     "dependencies": {
         "posthtml-attrs-parser": "^0.1.0",
-        "lodash": "3.10.1"
+        "lodash": "^3.10.1"
     },
     "devDependencies": {
         "chai": "^3.2.0",
         "posthtml": "^0.3.0",
-        "gulp-posthtml": "1.5.2",
+        "gulp-posthtml": "^1.5.2",
         "posthtml-attrs-parser": "^0.1.0",
         "mocha": "^2.2.5"
     },
