@@ -1,6 +1,6 @@
 {
     "name": "posthtml-px2rem",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Change px to rem in HTML inline CSS based on PostHTML",
     "main": "index.js",
     "dependencies": {
