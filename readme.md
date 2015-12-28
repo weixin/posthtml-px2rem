@@ -9,8 +9,7 @@
 [![License](https://img.shields.io/npm/l/posthtml-px2rem.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.") 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/weixin/posthtml-px2rem/trend.png)](https://bitdeli.com/free "GitHub Analyze")
 
-> Be lazy, add images's CSS automatically, like `width` & `height` and more.    
-> Save time, make money.
+> Change px to rem in HTML inline CSS based on PostHTML
 
 **NPM Home Page:** [https://www.npmjs.com/package/posthtml-px2rem](https://www.npmjs.com/package/posthtml-px2rem)
 
@@ -27,56 +26,75 @@ npm install posthtml-px2rem --save
 **gulpfile.js**
 
 ```javascript
-var px2rem = require('posthtml-px2rem');
+var posthtml = require('gulp-posthtml');
+var posthtmlPx2rem = require('posthtml-px2rem');
 
-gulp.src(paths.src.less)
-    .pipe(less())
-    .pipe(px2rem())
-    .pipe(gulp.dest(paths.src.css));
-        	
+gulp.src(paths.src.html)
+.pipe(posthtml(posthtmlPx2rem({rootValue: 20, minPixelValue: 2})))
+.pipe(gulp.dest(paths.dist.dir));
+
 ```
 
 **Options**  
-Set CSS which you wish to be added automatically.
 
 ```javascript
 options = lodash.extend({
-    width: true,
-    height: true,
-    backgroundSize: true, 
-    slice: '../slice' // Set slice image path
-}, options);
+    rootValue: 16, // root font-size
+    unitPrecision: 5, // numbers after `.`
+    minPixelValue: 0 // set it 2 if you want to ignore value like 1px & -1px
+}, options)
 ```
 
 ## Result
 
-**CSS In**
+**HTML In** (Type 1)
 
 
 ```css
-.icon-test {
-	background-image: url(../slice/test.png);
+<style>
+.test {
+    font-size: 10PX;
+    width: 20px;
+    margin: 30px 40px 50px 60px;
+    border: 1px solid #fff;
 }
+</style>
 ```
 
-**CSS Out**
+**HTML Out**
 
-```css
-.icon-test {
-	width: 32px;
-	height: 66px;
-	background-image: url(../slice/test.png);
-	background-size: 32px;
+```html
+<style>
+.test {
+	font-size: 10PX;
+    width: 1rem;
+    margin: 1.5rem 2rem 2.5rem 3rem;
+    border: 1px solid #fff
 }
+</style>
 ```
 
-_Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if needed._
+**HTML In** (Type 2)
+
+
+```html
+<div style="font-size: 10PX;width: 1rem;margin: 1.5rem 2rem 2.5rem 3rem;border: 1px solid #fff">
+    test
+</div>
+```
+
+**HTML Out**
+
+```html
+<div style="font-size: 10PX; width: 1rem; margin: 1.5rem 2rem 2.5rem 3rem; border: 1px solid #fff">
+    test
+</div>
+```
 
 ## Notes
 
-* Get image size from `HEX` data from file buffer via [fast-image-size](https://github.com/Ziv-Barber/fast-image-size), more fast now.
-* Detect `PNG` & `JPG` based on [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
-* No minimum image buffer size limited now [/fast-image-size/pull/5](https://github.com/Ziv-Barber/fast-image-size/pull/5).
+* Ignoring `rem` replacement using `PX` `Px`, like `123PX` not `123px`.
+* Set `minPixelValue : 2` will ignore all the value `1px` & `-1.2px`
 
 ## Contributing
 

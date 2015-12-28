@@ -4,7 +4,7 @@ var path = require('path');
 var lodash = require('lodash');
 var parseAttrs = require('posthtml-attrs-parser');
 
-module.exports = function(options) {
+module.exports = function (options) {
 
     var pxRegex = /(\d*\.?\d+)px/ig;
 
@@ -14,19 +14,19 @@ module.exports = function(options) {
         minPixelValue: 0 // set it 2 if you want to ignore value like 1px & -1px
     }, options);
 
-    function createPxReplace (rootValue, unitPrecision, minPixelValue) {
+    function createPxReplace(rootValue, unitPrecision, minPixelValue) {
 
         return function (m, $1) {
 
             // ignoring `PX` `Px`
-            if (m.indexOf('px') === -1){
+            if (m.indexOf('px') === -1) {
                 return m;
             }
-            if (!$1){
+            if (!$1) {
                 return m;
             }
             var pixels = parseFloat($1);
-            if (pixels < minPixelValue){
+            if (pixels < minPixelValue) {
                 return m;
             }
             return toFixed((pixels / rootValue), unitPrecision) + 'rem';
@@ -39,12 +39,12 @@ module.exports = function(options) {
         return Math.round(wholeNumber / 10) * 10 / multiplier;
     }
 
-    return function(tree) {
+    return function (tree) {
 
         var pxReplace = createPxReplace(options.rootValue, options.unitPrecision, options.minPixelValue);
 
         // inline CSS `<style>` in HTML
-        tree.match({ tag: 'style' }, function(node) {
+        tree.match({tag: 'style'}, function (node) {
 
             var replacedContent;
             replacedContent = node.content.toString().replace(pxRegex, pxReplace);
@@ -55,16 +55,16 @@ module.exports = function(options) {
         });
 
         /* inline CSS `style="xxx"` in DOM*/
-        tree.match({ attrs: { style: true }}, function(node) {
+        tree.match({attrs: {style: true}}, function (node) {
 
             var attrs = parseAttrs(node.attrs);
-            for( var x in attrs['style']){
+            for (var x in attrs['style']) {
 
-                if(attrs['style'].hasOwnProperty(x)){
+                if (attrs['style'].hasOwnProperty(x)) {
                     var styleValue = attrs['style'][x];
 
                     // e.g. style="width=10px; width=20px;"
-                    if(typeof styleValue == 'object')
+                    if (typeof styleValue == 'object')
                         styleValue = styleValue[styleValue.length - 1];
 
                     var newStyleValue;
