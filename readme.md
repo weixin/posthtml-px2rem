@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/npm/l/posthtml-px2rem.svg?style=flat)](http://opensource.org/licenses/MIT "Feel free to contribute.") 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/weixin/posthtml-px2rem/trend.png)](https://bitdeli.com/free "GitHub Analyze")
 
-> Change px to rem in HTML inline CSS based on PostHTML
+> Change px to rem in HTML inline CSS based on [PostHTML](http://github.com/posthtml/posthtml)
 
 **NPM Home Page:** [https://www.npmjs.com/package/posthtml-px2rem](https://www.npmjs.com/package/posthtml-px2rem)
 
