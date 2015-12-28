@@ -26,6 +26,7 @@
         "px",
         "html",
         "posthtml",
+        "posthtml-plugin",
         "plugin",
         "gulpplugin",
         "xml",

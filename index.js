@@ -1,6 +1,4 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
 var lodash = require('lodash');
 var parseAttrs = require('posthtml-attrs-parser');
 
@@ -39,7 +37,7 @@ module.exports = function (options) {
         return Math.round(wholeNumber / 10) * 10 / multiplier;
     }
 
-    return function (tree) {
+    return function px2rem(tree) {
 
         var pxReplace = createPxReplace(options.rootValue, options.unitPrecision, options.minPixelValue);
 
