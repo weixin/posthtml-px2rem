@@ -39,7 +39,7 @@ gulp.src(paths.src.html)
 
 ```javascript
 options = lodash.extend({
-    rootValue: 16, // root font-size
+    rootValue: 16, // root font-size on <html>
     unitPrecision: 5, // numbers after `.`
     minPixelValue: 0 // set it 2 if you want to ignore value like 1px & -1px
 }, options)
