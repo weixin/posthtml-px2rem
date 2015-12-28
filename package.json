@@ -1,0 +1,47 @@
+{
+    "name": "posthtml-px2rem",
+    "version": "0.0.1",
+    "description": "Change px to rem in HTML inline CSS based on PostHTML",
+    "main": "index.js",
+    "dependencies": {
+        "posthtml-parser": "^0.1.1",
+        "lodash": "3.10.1"
+    },
+    "devDependencies": {
+        "chai": "^3.2.0",
+        "posthtml": "^0.3.0",
+        "posthtml-parser": "^0.1.1",
+        "mocha": "^2.2.5"
+    },
+    "scripts": {
+        "test": "npm test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/weixin/posthtml-px2rem"
+    },
+    "keywords": [
+        "rem",
+        "px",
+        "html",
+        "posthtml",
+        "plugin",
+        "gulpplugin",
+        "xml",
+        "css",
+        "file",
+        "convert",
+        "parser",
+        "inline"
+    ],
+    "author": {
+        "name": "hzlzh",
+        "email": "hzlzh.dev@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/weixin/posthtml-px2rem",
+    "bugs": {
+        "url": "https://github.com/weixin/posthtml-px2rem/issues"
+    },
+    "readmeFilename": "README.md"
+}
