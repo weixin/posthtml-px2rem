@@ -78,7 +78,7 @@ options = lodash.extend({
 
 
 ```html
-<div style="font-size: 10PX;width: 1rem;margin: 1.5rem 2rem 2.5rem 3rem;border: 1px solid #fff">
+<div style="font-size: 10PX; width: 20px; margin: 30px 40px 50px 60px; border: 1px solid #fff;">
     test
 </div>
 ```
@@ -86,7 +86,7 @@ options = lodash.extend({
 **HTML Out**
 
 ```html
-<div style="font-size: 10PX; width: 1rem; margin: 1.5rem 2rem 2.5rem 3rem; border: 1px solid #fff">
+<div style="font-size: 10PX; width: 1rem; margin: 1.5rem 2rem 2.5rem 3rem; border: 1px solid #fff;">
     test
 </div>
 ```
