@@ -30,7 +30,9 @@ var posthtml = require('gulp-posthtml');
 var posthtmlPx2rem = require('posthtml-px2rem');
 
 gulp.src(paths.src.html)
-.pipe(posthtml(posthtmlPx2rem({rootValue: 20, minPixelValue: 2})))
+.pipe(posthtml(
+    [posthtmlPx2rem({rootValue: 20, minPixelValue: 2})]
+))
 .pipe(gulp.dest(paths.dist.dir));
 
 ```
@@ -66,7 +68,7 @@ options = lodash.extend({
 ```html
 <style>
 .test {
-	font-size: 10PX;
+    font-size: 10PX;
     width: 1rem;
     margin: 1.5rem 2rem 2.5rem 3rem;
     border: 1px solid #fff
